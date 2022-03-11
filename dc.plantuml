@@ -1,0 +1,61 @@
+@startuml test
+
+hide circle
+hide empty members
+hide empty methods
+
+skinparam classAttributeIconSize 0
+
+skinparam roundcorner 5
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName Helvetica
+}
+
+skinparam arrow {
+    MessageAlign center
+}
+
+Class Entreprise {
+    nom
+    nbEmployes
+    --
+    getNom()
+    getNbEmployes()
+}
+
+Class Chantier {
+    adresse
+    --
+    getAdresse()
+}
+
+Class Artisan {
+    nom 
+    specialite
+    salaire
+    horaires
+    --
+    getNom()
+    getSpecialite()
+    getSalaire()
+    getHoraires()
+}
+
+Artisan -- Entreprise : "*" faire_partie "1..1"
+Artisan "0..*"-- "1..*" Chantier 
+(Artisan, Chantier) .. Travailler
+
+Class Travailler {
+    nbHeures
+    dateDebut
+    dateFin
+    --
+    getPayerArtisan()
+}
+@enduml

@@ -1,0 +1,36 @@
+@startuml test
+
+hide circle
+hide empty members
+hide empty methods
+
+skinparam classAttributeIconSize 0
+
+skinparam roundcorner 5
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName Helvetica
+}
+
+skinparam arrow {
+    MessageAlign center
+}
+
+usecase 1 as "Réserver par cb"
+usecase 2 as "Réserver"
+usecase 3 as "S'identifier"
+usecase 4 as "Consulter"
+
+actor Client
+(2) <|-- (1)
+Client -> 4
+4 <.. 2 : <<extend>>
+
+3 <.. 4 : <<include>>
+
+@enduml
